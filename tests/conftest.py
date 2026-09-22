@@ -1,83 +1,112 @@
-"""Application settings, read from the environment and validated at startup."""
+"""Fixtures. No test loads spaCy or calls an API."""
 
 from __future__ import annotations
 
-from functools import lru_cache
+import sys
 from pathlib import Path
-from typing import Literal
 
-from pydantic import Field, SecretStr
-from pydantic_settings import BaseSettings, SettingsConfigDict
+import pytest
+from fastapi.testclient import TestClient
+from sqlmodel import Session, SQLModel, create_engine
+from sqlmodel.pool import StaticPool
 
-EngineName = Literal["presidio-be", "llm-zero-shot", "llm-few-shot"]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app import database  # noqa: E402
+from app.config import Settings  # noqa: E402
+from app.entities import Entity  # noqa: E402
+from app.main import create_app  # noqa: E402
+from app.service import AnonymizationService  # noqa: E402
 
 
-class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", extra="ignore"
+class FakeDetector:
+    """Finds fixed surface forms. Can be told to fail."""
+
+    name = "fake"
+
+    def __init__(self, matches: dict[str, str] | None = None) -> None:
+        self.matches = matches or {"Marie": "PERSON", "Ordina": "ORG"}
+        self.fail_on: set[str] = set()
+        self.calls = 0
+
+    def detect(self, text: str) -> list[Entity]:
+        self.calls += 1
+        if any(token in text for token in self.fail_on):
+            raise RuntimeError("detector exploded")
+        found = []
+        for surface, label in self.matches.items():
+            start = text.find(surface)
+            if start != -1:
+                found.append(
+                    Entity(
+                        start=start,
+                        end=start + len(surface),
+                        label=label,
+                        text=surface,
+                        source=self.name,
+                    )
+                )
+        return found
+
+
+class FakeService(AnonymizationService):
+    """Service with engines injected instead of loaded."""
+
+    def __init__(self, settings: Settings, detector: FakeDetector) -> None:
+        self.settings = settings
+        from app.tokens import HeuristicTokenCounter
+
+        self.tokens = HeuristicTokenCounter(settings.chars_per_token)
+        self.engines = {"presidio-be": detector}
+
+    def _load_engines(self) -> None:  # never loads a real model
+        return
+
+
+@pytest.fixture
+def settings(tmp_path: Path) -> Settings:
+    return Settings(
+        environment="dev",
+        default_engine="presidio-be",
+        database_url="sqlite://",  # in-memory
+        data_dir=tmp_path,
+        max_input_tokens=100,
+        max_batch_size=5,
+        max_batch_tokens=300,
     )
 
-    app_name: str = "PII Anonymisation API"
-    environment: Literal["dev", "prod"] = "dev"
-    log_level: str = "INFO"
 
-    # -- engines ----------------------------------------------------------
-    default_engine: EngineName = "presidio-be"
-    spacy_model: str = "en_core_web_lg"
-    score_threshold: float = Field(default=0.4, ge=0.0, le=1.0)
+@pytest.fixture
+def detector() -> FakeDetector:
+    return FakeDetector()
 
-    cohere_api_key: SecretStr | None = None
-    llm_model: str = Field(
-        default="command-a-03-2025",
-        description="Pinned version. A floating alias changes behaviour "
-        "between deploys with no code change.",
+
+@pytest.fixture
+def client(settings: Settings, detector: FakeDetector):
+    """Client backed by a shared in-memory SQLite database.
+
+    StaticPool keeps every connection pointed at the same in-memory database;
+    without it each connection gets its own and the tables vanish between
+    calls.
+    """
+    database.reset_engine()
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
     )
+    database._engine = engine
+    SQLModel.metadata.create_all(engine)
 
-    # -- input limits -----------------------------------------------------
-    max_input_tokens: int = Field(
-        default=8_000,
-        ge=1,
-        description="Per-document ceiling. Tokens rather than characters, "
-        "because tokens are what cost money and fill a context window.",
-    )
-    max_batch_size: int = Field(default=50, ge=1)
-    max_batch_tokens: int = Field(
-        default=40_000,
-        ge=1,
-        description="Total across a batch. Fifty documents each just under the "
-        "per-document limit is still an enormous request.",
-    )
-    chars_per_token: float = Field(default=4.0, gt=0)
+    app = create_app(settings=settings, service=FakeService(settings, detector))
+    with TestClient(app) as running:
+        yield running
 
-    # -- storage ----------------------------------------------------------
-    database_url: str = Field(
-        default="sqlite:///./data/requests.db",
-        description="SQLite by default so the service runs with no "
-        "infrastructure. Point at Postgres for anything shared.",
-    )
-    store_input_text: bool = Field(
-        default=True,
-        description="Persist the raw request text. Convenient for debugging, "
-        "but it means the database holds the exact data this service exists "
-        "to remove. Turn it off in production unless you have a reason.",
-    )
-    store_output_text: bool = Field(
-        default=True,
-        description="Persist the redacted output. Safe to keep on - it is "
-        "the anonymised form.",
-    )
-
-    data_dir: Path = Path("data")
-
-    @property
-    def few_shot_path(self) -> Path:
-        return self.data_dir / "few_shot_examples.json"
-
-    @property
-    def llm_available(self) -> bool:
-        return self.cohere_api_key is not None
+    database.reset_engine()
 
 
-@lru_cache
-def get_settings() -> Settings:
-    return Settings()
+@pytest.fixture
+def session(client) -> Session:
+    """A session on the same database the client writes to."""
+    with Session(database._engine) as s:
+        yield s

@@ -269,9 +269,7 @@ def test_different_doc_id_is_not_deduplicated(client: TestClient, detector):
     assert detector.calls == 2
 
 
-def test_changed_text_under_the_same_doc_id_is_not_replayed(
-    client: TestClient, detector
-):
+def test_changed_text_under_the_same_doc_id_is_not_replayed(client: TestClient, detector):
     """The dedupe key ignores text by design, so the stored hash is the only
     guard against a document changing under a reused id."""
     client.post("/v1/anonymize", json={"text": "Marie here.", "doc_id": "d1"})
@@ -286,9 +284,10 @@ def test_changed_text_under_the_same_doc_id_is_not_replayed(
 
 def test_failures_are_not_replayed(client: TestClient, detector, session):
     detector.fail_on = {"POISON"}
-    assert client.post(
-        "/v1/anonymize", json={"text": "POISON", "doc_id": "d1"}
-    ).status_code == 502
+    assert (
+        client.post("/v1/anonymize", json={"text": "POISON", "doc_id": "d1"}).status_code
+        == 502
+    )
 
     detector.fail_on = set()
     body = client.post("/v1/anonymize", json={"text": "POISON", "doc_id": "d1"}).json()
