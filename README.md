@@ -274,6 +274,21 @@ uv run ruff check app tests streamlit_app.py
 Tests inject a fake detector and an in-memory database, so the suite runs in
 under half a second.
 
+### CI
+
+`.github/workflows/ci.yml` runs on every pull request into `main`, all on
+`uv sync --locked`:
+
+| Job | Runs |
+| --- | --- |
+| `test` | `uv run pytest` |
+| `lint` | `uv run ruff check .` |
+| `format` | `uv run ruff format --check .` |
+| `build` | Docker build for `api`, `dashboard` and `demo` (no push), gated on `test` + `lint` + `format` passing |
+
+The three checks run in parallel; `build` only starts once all three are
+green, so a broken image is never built from code that fails tests or lint.
+
 ## Known limitations
 
 - **English only.** Presidio runs with `language="en"`; Dutch and French input
