@@ -1,7 +1,7 @@
 """Structured logging.
 
 One rule specific to this service: **never log request text.** The input is by
-definition sensitive, and a log aggregator is a far less controlled store than
+definition sensitive, and a log aggregator is less controlled store than
 whatever the caller was protecting. Logs carry identifiers, labels, counts and
 timings only.
 """
