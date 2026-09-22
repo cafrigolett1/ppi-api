@@ -1,0 +1,42 @@
+# secrets
+.env
+
+# Three images share this build context (api, demo, dashboard), so anything
+# any Dockerfile needs to COPY must stay out of this list:
+#   streamlit_app.py  -> copied by Dockerfile.streamlit
+#   dashboard.py       -> copied by Dockerfile.dashboard
+
+# version control
+.git
+.gitignore
+
+# virtualenvs - the biggest thing to keep out of the build context
+.venv/
+venv/
+
+# python cruft
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# analysis code excluded from every image except dashboard.py's two actual
+# dependencies. runner.py and tracking.py pull in requests/mlflow and are not
+# needed by any container; entities.py and metrics.py are pure pydantic/stdlib
+# and dashboard.py imports them directly, so they must stay reachable.
+app/evaluation/runner.py
+app/evaluation/tracking.py
+notebooks/
+scripts/
+mlflow.db
+mlartifacts/
+mlruns/
+
+# not needed in any image
+tests/
+README.md
+
+# request logs contain raw payloads; never bake them into an image
+data/*.db
+data/*.db-journal

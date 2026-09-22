@@ -1,0 +1,55 @@
+[project]
+name = "pii-api"
+version = "1.0.0"
+description = "API that detects and redacts sensitive entities in text"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "sqlmodel>=0.0.22,<0.1",
+    "presidio-analyzer>=2.2,<3",
+    "spacy>=3.8,<4",              # Presidio's NLP engine
+    "cohere>=5.11,<8",
+    "pydantic>=2.7,<3",
+    "pydantic-settings>=2.3,<3",
+    "requests>=2.31,<3",          # used by app/evaluation/runner.py
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2",
+    "httpx>=0.27",                # fastapi.testclient
+    "ruff>=0.6",
+]
+demo = [
+    "streamlit>=1.36",
+    "requests>=2.31",
+    "pandas>=2.2",
+    "plotly>=5.22",
+    "matplotlib>=3.8",             # pandas Styler.background_gradient, used by dashboard.py
+]
+notebook = [
+    "jupyter>=1.0",
+    "pandas>=2.2",
+    "matplotlib>=3.8",
+    "mlflow>=3.0",
+    "requests>=2.31",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 90
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]

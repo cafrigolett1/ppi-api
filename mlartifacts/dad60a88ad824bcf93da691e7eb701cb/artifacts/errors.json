@@ -1,0 +1,108 @@
+[
+  {
+    "doc_id": "provided-04",
+    "input": "Barack Obama was the President of the United States from 2009 to 2017. He was born in Honolulu, Hawaii and attended Harvard Law School. His phone number is +1 (202) 555-0199.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 34,
+        "end": 51,
+        "text": "the United States"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 38,
+        "end": 51,
+        "text": "United States"
+      }
+    ]
+  },
+  {
+    "doc_id": "provided-05",
+    "input": "The Eiffel Tower is a famous landmark in Paris. It was built in 1889 and is one of the most visited attractions in the world.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 0,
+        "end": 16,
+        "text": "The Eiffel Tower"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 16,
+        "text": "The Eiffel Tower"
+      }
+    ]
+  },
+  {
+    "doc_id": "provided-07",
+    "input": "Steve Jobs was the co-founder of Apple Inc. He was known for his contributions to the personal computer revolution and the development of the iPhone. He passed away in 2011.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 19,
+        "end": 29,
+        "text": "co-founder"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "provided-08",
+    "input": "New York City is the largest city in the United States. It is located in the state of New York and has a population of over 8 million people. The city's area code is 212.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 86,
+        "end": 94,
+        "text": "New York"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 73,
+        "end": 94,
+        "text": "the state of New York"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-10",
+    "input": "The quarterly report was reviewed in Antwerp last March. No individuals were named and no contact details were published.",
+    "missed": [],
+    "spurious": [
+      {
+        "label": "DATE_TIME",
+        "start": 45,
+        "end": 55,
+        "text": "last March"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-14",
+    "input": "Sophie Leclercq est Ingénieure Logiciel chez Proximus à Bruxelles. Son numéro est 02 202 41 11.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 56,
+        "end": 65,
+        "text": "Bruxelles"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 54,
+        "end": 65,
+        "text": "à Bruxelles"
+      }
+    ]
+  }
+]

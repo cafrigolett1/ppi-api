@@ -1,0 +1,26 @@
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+WORKDIR /app
+
+# Only what dashboard.py needs to import and run - not spaCy, not Presidio,
+# not the Cohere SDK. This image never loads a model; it only reads SQLite
+# and scores predictions already stored there against the gold dataset.
+RUN pip install --no-cache-dir streamlit pandas plotly matplotlib pydantic
+
+RUN useradd --create-home --uid 1000 appuser
+
+COPY --chown=appuser:appuser dashboard.py ./
+COPY --chown=appuser:appuser data/evaluation.jsonl ./data/evaluation.jsonl
+# dashboard.py imports app.entities and app.evaluation.metrics. Both need only
+# pydantic and stdlib - neither pulls in spaCy, Presidio or the Cohere SDK -
+# so they can be copied without installing this project's full dependency set.
+COPY --chown=appuser:appuser app/__init__.py ./app/__init__.py
+COPY --chown=appuser:appuser app/entities.py ./app/entities.py
+COPY --chown=appuser:appuser app/evaluation/__init__.py ./app/evaluation/__init__.py
+COPY --chown=appuser:appuser app/evaluation/metrics.py ./app/evaluation/metrics.py
+
+USER appuser
+EXPOSE 8502
+CMD ["streamlit", "run", "dashboard.py", \
+     "--server.address=0.0.0.0", "--server.port=8502"]

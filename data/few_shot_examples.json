@@ -1,0 +1,54 @@
+[
+  {
+    "text": "Hendrik Vermeulen is a Data Analyst at Telenet. He was born in Genk, Limburg and now lives at Kerkstraat 14, 2300 Turnhout. His number is 014 41 22 33.",
+    "entities": [
+      {"text": "Hendrik Vermeulen", "label": "PERSON"},
+      {"text": "Data Analyst", "label": "JOB"},
+      {"text": "Telenet", "label": "ORG"},
+      {"text": "Genk, Limburg", "label": "LOCATION"},
+      {"text": "Kerkstraat 14, 2300 Turnhout", "label": "LOCATION"},
+      {"text": "014 41 22 33", "label": "PHONE_NUMBER"}
+    ]
+  },
+  {
+    "text": "Astrid Lambrechts studied at UCLouvain from 2012 to 2014 and joined Bpost as a Logistics Manager. Her email is a.lambrechts@bpost.be and her national number is 88.04.22-317.26.",
+    "entities": [
+      {"text": "Astrid Lambrechts", "label": "PERSON"},
+      {"text": "UCLouvain", "label": "UNIVERSITY"},
+      {"text": "2012", "label": "DATE_TIME"},
+      {"text": "2014", "label": "DATE_TIME"},
+      {"text": "Bpost", "label": "ORG"},
+      {"text": "Logistics Manager", "label": "JOB"},
+      {"text": "a.lambrechts@bpost.be", "label": "EMAIL_ADDRESS"},
+      {"text": "88.04.22-317.26", "label": "SSN"}
+    ]
+  },
+  {
+    "text": "Argenta transferred €8.400 to BE19 6451 1223 3890 on 2024-05-30. The branch moved from Namur to Oostende, in the Walloon Region. Details are at https://www.argenta.be/nl/contact.",
+    "entities": [
+      {"text": "Argenta", "label": "ORG"},
+      {"text": "€8.400", "label": "AMOUNT"},
+      {"text": "BE19 6451 1223 3890", "label": "IBAN"},
+      {"text": "2024-05-30", "label": "DATE_TIME"},
+      {"text": "Namur", "label": "LOCATION"},
+      {"text": "Oostende", "label": "LOCATION"},
+      {"text": "the Walloon Region", "label": "LOCATION"},
+      {"text": "https://www.argenta.be/nl/contact", "label": "URL"}
+    ]
+  },
+  {
+    "text": "Youssef El Amrani, a naturalized Belgian citizen, arrived from Morocco in 2018. He works as a Civil Engineer and his area code is 059.",
+    "entities": [
+      {"text": "Youssef El Amrani", "label": "PERSON"},
+      {"text": "Belgian", "label": "LOCATION"},
+      {"text": "Morocco", "label": "LOCATION"},
+      {"text": "2018", "label": "DATE_TIME"},
+      {"text": "Civil Engineer", "label": "JOB"},
+      {"text": "059", "label": "LOCATION"}
+    ]
+  },
+  {
+    "text": "The internal audit was completed last quarter. No employees were named and no account details were recorded.",
+    "entities": []
+  }
+]

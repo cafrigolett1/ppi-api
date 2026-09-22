@@ -1,0 +1,43 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        # en_core_web_sm cuts ~500 MB off the image at some accuracy cost.
+        SPACY_MODEL: en_core_web_lg
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # The SQLite database lives here, so request history survives rebuilds.
+      - ./data:/app/data
+    restart: unless-stopped
+
+  demo:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      # Service name, not localhost: the demo runs in its own container.
+      API_URL: http://api:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    ports:
+      - "8502:8502"
+    volumes:
+      # Read-only: this container only monitors request_logs, it never writes.
+      - ./data:/app/data:ro
+    environment:
+      DASHBOARD_DB_PATH: /app/data/requests.db
+    depends_on:
+      - api
+    restart: unless-stopped

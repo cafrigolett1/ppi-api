@@ -1,0 +1,891 @@
+[
+  {
+    "doc_id": "provided-01",
+    "input": "John Smith works for Apple Inc. as a software engineer. His email address is john.smith@apple.com. He recently traveled to London for a conference.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 21,
+        "end": 31,
+        "text": "Apple Inc."
+      },
+      {
+        "label": "JOB",
+        "start": 37,
+        "end": 54,
+        "text": "software engineer"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "provided-03",
+    "input": "Google has acquired YouTube for $1.65 billion. The deal was finalized in 2006.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 6,
+        "text": "Google"
+      },
+      {
+        "label": "ORG",
+        "start": 20,
+        "end": 27,
+        "text": "YouTube"
+      },
+      {
+        "label": "AMOUNT",
+        "start": 32,
+        "end": 45,
+        "text": "$1.65 billion"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "provided-04",
+    "input": "Barack Obama was the President of the United States from 2009 to 2017. He was born in Honolulu, Hawaii and attended Harvard Law School. His phone number is +1 (202) 555-0199.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 21,
+        "end": 30,
+        "text": "President"
+      },
+      {
+        "label": "LOCATION",
+        "start": 86,
+        "end": 102,
+        "text": "Honolulu, Hawaii"
+      },
+      {
+        "label": "UNIVERSITY",
+        "start": 116,
+        "end": 134,
+        "text": "Harvard Law School"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 86,
+        "end": 94,
+        "text": "Honolulu"
+      },
+      {
+        "label": "LOCATION",
+        "start": 96,
+        "end": 102,
+        "text": "Hawaii"
+      }
+    ]
+  },
+  {
+    "doc_id": "provided-06",
+    "input": "Amazon is a multinational technology company based in Seattle, Washington. It was founded by Jeff Bezos in 1994. Their website is www.amazon.com.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 6,
+        "text": "Amazon"
+      },
+      {
+        "label": "LOCATION",
+        "start": 54,
+        "end": 73,
+        "text": "Seattle, Washington"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 54,
+        "end": 61,
+        "text": "Seattle"
+      },
+      {
+        "label": "LOCATION",
+        "start": 63,
+        "end": 73,
+        "text": "Washington"
+      }
+    ]
+  },
+  {
+    "doc_id": "provided-07",
+    "input": "Steve Jobs was the co-founder of Apple Inc. He was known for his contributions to the personal computer revolution and the development of the iPhone. He passed away in 2011.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 19,
+        "end": 29,
+        "text": "co-founder"
+      },
+      {
+        "label": "ORG",
+        "start": 33,
+        "end": 43,
+        "text": "Apple Inc."
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "provided-08",
+    "input": "New York City is the largest city in the United States. It is located in the state of New York and has a population of over 8 million people. The city's area code is 212.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 166,
+        "end": 169,
+        "text": "212"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "provided-09",
+    "input": "Microsoft Corporation is a technology company based in Redmond, Washington. It was founded by Bill Gates and Paul Allen in 1975. Their headquarters are located at One Microsoft Way, Redmond, WA 98052.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 21,
+        "text": "Microsoft Corporation"
+      },
+      {
+        "label": "LOCATION",
+        "start": 55,
+        "end": 74,
+        "text": "Redmond, Washington"
+      },
+      {
+        "label": "LOCATION",
+        "start": 163,
+        "end": 199,
+        "text": "One Microsoft Way, Redmond, WA 98052"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 55,
+        "end": 62,
+        "text": "Redmond"
+      },
+      {
+        "label": "LOCATION",
+        "start": 64,
+        "end": 74,
+        "text": "Washington"
+      },
+      {
+        "label": "LOCATION",
+        "start": 182,
+        "end": 189,
+        "text": "Redmond"
+      },
+      {
+        "label": "LOCATION",
+        "start": 191,
+        "end": 199,
+        "text": "WA 98052"
+      }
+    ]
+  },
+  {
+    "doc_id": "provided-10",
+    "input": "Elon Musk is the CEO of SpaceX and Tesla. He was born in South Africa and became a naturalized US citizen in 2002. His net worth is estimated to be over $100 billion.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 17,
+        "end": 20,
+        "text": "CEO"
+      },
+      {
+        "label": "ORG",
+        "start": 24,
+        "end": 30,
+        "text": "SpaceX"
+      },
+      {
+        "label": "ORG",
+        "start": 35,
+        "end": 40,
+        "text": "Tesla"
+      },
+      {
+        "label": "AMOUNT",
+        "start": 153,
+        "end": 165,
+        "text": "$100 billion"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-01",
+    "input": "Marie Dubois joined Ordina Belgium as a Data Scientist in 2019. Her work email is marie.dubois@ordina.be and her desk phone is 015 29 58 58.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 20,
+        "end": 34,
+        "text": "Ordina Belgium"
+      },
+      {
+        "label": "JOB",
+        "start": 40,
+        "end": 54,
+        "text": "Data Scientist"
+      },
+      {
+        "label": "PHONE_NUMBER",
+        "start": 127,
+        "end": 139,
+        "text": "015 29 58 58"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 20,
+        "end": 34,
+        "text": "Ordina Belgium"
+      },
+      {
+        "label": "DATE_TIME",
+        "start": 134,
+        "end": 139,
+        "text": "58 58"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-02",
+    "input": "The invoice for €12.500 was settled on 2023-04-18 09:15:00 and paid into BE68 5390 0754 7034.",
+    "missed": [
+      {
+        "label": "AMOUNT",
+        "start": 16,
+        "end": 23,
+        "text": "€12.500"
+      },
+      {
+        "label": "DATE_TIME",
+        "start": 39,
+        "end": 58,
+        "text": "2023-04-18 09:15:00"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "DATE_TIME",
+        "start": 39,
+        "end": 49,
+        "text": "2023-04-18"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-03",
+    "input": "Pieter Janssens studied at KU Leuven before moving to Ghent. His national number is 77.01.01-123.16.",
+    "missed": [
+      {
+        "label": "UNIVERSITY",
+        "start": 27,
+        "end": 36,
+        "text": "KU Leuven"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 27,
+        "end": 36,
+        "text": "KU Leuven"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-04",
+    "input": "Our office is at Blarenberglaan 3b, 2800 Mechelen. You can find directions on https://www.ordina.com/contact.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 17,
+        "end": 49,
+        "text": "Blarenberglaan 3b, 2800 Mechelen"
+      },
+      {
+        "label": "URL",
+        "start": 78,
+        "end": 108,
+        "text": "https://www.ordina.com/contact"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 41,
+        "end": 49,
+        "text": "Mechelen"
+      },
+      {
+        "label": "URL",
+        "start": 78,
+        "end": 109,
+        "text": "https://www.ordina.com/contact."
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-05",
+    "input": "Sofie De Smet is a Senior Accountant at Deloitte Belgium. Reach her on +32 2 800 20 00 or sofie.desmet@deloitte.be.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 19,
+        "end": 36,
+        "text": "Senior Accountant"
+      },
+      {
+        "label": "ORG",
+        "start": 40,
+        "end": 56,
+        "text": "Deloitte Belgium"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 58,
+        "end": 63,
+        "text": "Reach"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-06",
+    "input": "Account BE37 0961 2345 6702 belongs to Thomas Peeters, born 93.03.15-456.01, a Software Engineer living in Antwerp.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 79,
+        "end": 96,
+        "text": "Software Engineer"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-07",
+    "input": "Professor Anne Verstraeten lectures at Ghent University and has published since 1998. Contact: a.verstraeten@ugent.be.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 0,
+        "end": 9,
+        "text": "Professor"
+      },
+      {
+        "label": "UNIVERSITY",
+        "start": 39,
+        "end": 55,
+        "text": "Ghent University"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-08",
+    "input": "KBC Bank transferred 45.000 EUR to an account held in Brussels on 2024-11-03. The reference document is at www.kbc.be/transfers.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 8,
+        "text": "KBC Bank"
+      },
+      {
+        "label": "AMOUNT",
+        "start": 21,
+        "end": 31,
+        "text": "45.000 EUR"
+      },
+      {
+        "label": "URL",
+        "start": 107,
+        "end": 127,
+        "text": "www.kbc.be/transfers"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "URL",
+        "start": 107,
+        "end": 128,
+        "text": "www.kbc.be/transfers."
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-09",
+    "input": "Dr. Lucas Mertens works as a Surgeon at UZ Leuven. His mobile is 0475 12 34 56 and his office is on Herestraat 49, 3000 Leuven.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 0,
+        "end": 3,
+        "text": "Dr."
+      },
+      {
+        "label": "JOB",
+        "start": 29,
+        "end": 36,
+        "text": "Surgeon"
+      },
+      {
+        "label": "ORG",
+        "start": 40,
+        "end": 49,
+        "text": "UZ Leuven"
+      },
+      {
+        "label": "LOCATION",
+        "start": 100,
+        "end": 126,
+        "text": "Herestraat 49, 3000 Leuven"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 43,
+        "end": 49,
+        "text": "Leuven"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-10",
+    "input": "The quarterly report was reviewed in Antwerp last March. No individuals were named and no contact details were published.",
+    "missed": [],
+    "spurious": [
+      {
+        "label": "DATE_TIME",
+        "start": 4,
+        "end": 13,
+        "text": "quarterly"
+      },
+      {
+        "label": "DATE_TIME",
+        "start": 45,
+        "end": 55,
+        "text": "last March"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-11",
+    "input": "Els Vandenbroucke was appointed Chief Financial Officer at Barco in Kortrijk on 2022-09-01 with a package of €185.000.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 32,
+        "end": 55,
+        "text": "Chief Financial Officer"
+      },
+      {
+        "label": "ORG",
+        "start": 59,
+        "end": 64,
+        "text": "Barco"
+      },
+      {
+        "label": "AMOUNT",
+        "start": 109,
+        "end": 117,
+        "text": "€185.000"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-12",
+    "input": "Please wire the deposit of €3.750 to BE27 0012 3456 7889 before 2025-01-15. Questions go to finance@umicore.com.",
+    "missed": [
+      {
+        "label": "AMOUNT",
+        "start": 27,
+        "end": 33,
+        "text": "€3.750"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-13",
+    "input": "Nele Claeys graduated from Vrije Universiteit Brussel in 2016 and now works as a Product Manager at Odoo.",
+    "missed": [
+      {
+        "label": "UNIVERSITY",
+        "start": 27,
+        "end": 53,
+        "text": "Vrije Universiteit Brussel"
+      },
+      {
+        "label": "JOB",
+        "start": 81,
+        "end": 96,
+        "text": "Product Manager"
+      },
+      {
+        "label": "ORG",
+        "start": 100,
+        "end": 104,
+        "text": "Odoo"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-14",
+    "input": "The claim was filed by Jonas Willems, national number 65.09.12-345.44, residing at Meir 78, 2000 Antwerpen.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 83,
+        "end": 106,
+        "text": "Meir 78, 2000 Antwerpen"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 83,
+        "end": 96,
+        "text": "Meir 78, 2000"
+      },
+      {
+        "label": "LOCATION",
+        "start": 97,
+        "end": 106,
+        "text": "Antwerpen"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-15",
+    "input": "Contact our Bruges branch on 050 44 86 86 or visit https://www.brugge.be/en/contact for opening hours.",
+    "missed": [],
+    "spurious": [
+      {
+        "label": "DATE_TIME",
+        "start": 88,
+        "end": 101,
+        "text": "opening hours"
+      }
+    ]
+  },
+  {
+    "doc_id": "belgian-16",
+    "input": "Ilse Van Damme, a Research Scientist at imec, presented her findings at the University of Antwerp on 2024-06-12.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 18,
+        "end": 36,
+        "text": "Research Scientist"
+      },
+      {
+        "label": "ORG",
+        "start": 40,
+        "end": 44,
+        "text": "imec"
+      },
+      {
+        "label": "UNIVERSITY",
+        "start": 76,
+        "end": 97,
+        "text": "University of Antwerp"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-17",
+    "input": "The salary review set Wouter Maes at €72.400 per year effective 2025-03-01. His HR contact is hr@proximus.be.",
+    "missed": [
+      {
+        "label": "AMOUNT",
+        "start": 37,
+        "end": 44,
+        "text": "€72.400"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-18",
+    "input": "Payment instructions were sent to BE49 3100 0001 2345 on behalf of Colruyt Group in Halle.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 67,
+        "end": 80,
+        "text": "Colruyt Group"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "belgian-19",
+    "input": "Karel Goossens, born 05.02.14-123.90, enrolled at Universiteit Hasselt as a Teaching Assistant.",
+    "missed": [
+      {
+        "label": "UNIVERSITY",
+        "start": 50,
+        "end": 70,
+        "text": "Universiteit Hasselt"
+      },
+      {
+        "label": "JOB",
+        "start": 76,
+        "end": 94,
+        "text": "Teaching Assistant"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 50,
+        "end": 70,
+        "text": "Universiteit Hasselt"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-04",
+    "input": "The total came to €1.234,56 which is written with a European decimal comma.",
+    "missed": [
+      {
+        "label": "AMOUNT",
+        "start": 18,
+        "end": 27,
+        "text": "€1.234,56"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 52,
+        "end": 60,
+        "text": "European"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-06",
+    "input": "The postal code 2800 should not be confused with the year 2019 in this sentence.",
+    "missed": [
+      {
+        "label": "LOCATION",
+        "start": 16,
+        "end": 20,
+        "text": "2800"
+      },
+      {
+        "label": "DATE_TIME",
+        "start": 58,
+        "end": 62,
+        "text": "2019"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "DATE_TIME",
+        "start": 49,
+        "end": 62,
+        "text": "the year 2019"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-09",
+    "input": "Sofie De Smet, Antwerp, Accountant, sofie@kbc.be, 03 202 41 11",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 24,
+        "end": 34,
+        "text": "Accountant"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "edge-12",
+    "input": "Brussels Airlines is a company while Brussels is a city.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 17,
+        "text": "Brussels Airlines"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "edge-13",
+    "input": "Jan Peeters werkt als Data Analist bij Colruyt Group in Halle. Zijn e-mailadres is jan.peeters@colruyt.be.",
+    "missed": [
+      {
+        "label": "JOB",
+        "start": 22,
+        "end": 34,
+        "text": "Data Analist"
+      },
+      {
+        "label": "ORG",
+        "start": 39,
+        "end": 52,
+        "text": "Colruyt Group"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 63,
+        "end": 79,
+        "text": "Zijn e-mailadres"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-14",
+    "input": "Sophie Leclercq est Ingénieure Logiciel chez Proximus à Bruxelles. Son numéro est 02 202 41 11.",
+    "missed": [
+      {
+        "label": "PERSON",
+        "start": 0,
+        "end": 15,
+        "text": "Sophie Leclercq"
+      },
+      {
+        "label": "JOB",
+        "start": 20,
+        "end": 39,
+        "text": "Ingénieure Logiciel"
+      },
+      {
+        "label": "ORG",
+        "start": 45,
+        "end": 53,
+        "text": "Proximus"
+      },
+      {
+        "label": "LOCATION",
+        "start": 56,
+        "end": 65,
+        "text": "Bruxelles"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 0,
+        "end": 19,
+        "text": "Sophie Leclercq est"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-15",
+    "input": "Ordina Belgium confirmed that Marie Dubois will relocate to Ghent",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 0,
+        "end": 14,
+        "text": "Ordina Belgium"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "LOCATION",
+        "start": 0,
+        "end": 14,
+        "text": "Ordina Belgium"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-17",
+    "input": "The file (prepared by Lucas Mertens, UZ Leuven) lists a payment of €900 made on 2024-07-09.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 37,
+        "end": 46,
+        "text": "UZ Leuven"
+      },
+      {
+        "label": "AMOUNT",
+        "start": 67,
+        "end": 71,
+        "text": "€900"
+      }
+    ],
+    "spurious": [
+      {
+        "label": "PERSON",
+        "start": 37,
+        "end": 46,
+        "text": "UZ Leuven"
+      }
+    ]
+  },
+  {
+    "doc_id": "edge-19",
+    "input": "Els Vandenbroucke moved from Barco to imec in 2023, then to Umicore in 2024, keeping els.v@umicore.com throughout.",
+    "missed": [
+      {
+        "label": "ORG",
+        "start": 29,
+        "end": 34,
+        "text": "Barco"
+      },
+      {
+        "label": "ORG",
+        "start": 38,
+        "end": 42,
+        "text": "imec"
+      },
+      {
+        "label": "ORG",
+        "start": 60,
+        "end": 67,
+        "text": "Umicore"
+      }
+    ],
+    "spurious": []
+  },
+  {
+    "doc_id": "edge-20",
+    "input": "Order 12345678901 was placed by a customer whose reference is ABC-9988-XY.",
+    "missed": [],
+    "spurious": [
+      {
+        "label": "PHONE_NUMBER",
+        "start": 6,
+        "end": 17,
+        "text": "12345678901"
+      }
+    ]
+  }
+]

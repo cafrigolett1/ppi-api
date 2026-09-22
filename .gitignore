@@ -1,0 +1,23 @@
+# secrets
+.env
+
+# database - request logs contain payloads
+data/*.db
+data/*.db-journal
+archify/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.egg-info/
+
+# tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,110 @@
+{
+  "AMOUNT": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 9,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0
+  },
+  "DATE_TIME": {
+    "precision": 0.9167,
+    "recall": 1.0,
+    "f1": 0.9565,
+    "support": 22,
+    "tp": 22,
+    "fp": 2,
+    "fn": 0
+  },
+  "EMAIL_ADDRESS": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 9,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0
+  },
+  "IBAN": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 6,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0
+  },
+  "JOB": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 17,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0
+  },
+  "LOCATION": {
+    "precision": 0.9706,
+    "recall": 0.9429,
+    "f1": 0.9565,
+    "support": 35,
+    "tp": 33,
+    "fp": 1,
+    "fn": 2
+  },
+  "ORG": {
+    "precision": 0.96,
+    "recall": 1.0,
+    "f1": 0.9796,
+    "support": 24,
+    "tp": 24,
+    "fp": 1,
+    "fn": 0
+  },
+  "PERSON": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 35,
+    "tp": 35,
+    "fp": 0,
+    "fn": 0
+  },
+  "PHONE_NUMBER": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 10,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0
+  },
+  "SSN": {
+    "precision": 0.8333,
+    "recall": 1.0,
+    "f1": 0.9091,
+    "support": 5,
+    "tp": 5,
+    "fp": 1,
+    "fn": 0
+  },
+  "UNIVERSITY": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 6,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0
+  },
+  "URL": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 5,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0
+  }
+}

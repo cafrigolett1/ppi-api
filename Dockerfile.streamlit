@@ -1,0 +1,15 @@
+FROM python:3.12-slim
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_PYTHON_DOWNLOADS=0
+WORKDIR /app
+
+# The demo only needs streamlit and requests - not spaCy, not Presidio.
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv pip install --system streamlit requests
+
+COPY streamlit_app.py ./
+EXPOSE 8501
+
+CMD ["streamlit", "run", "streamlit_app.py", \
+     "--server.address=0.0.0.0", "--server.port=8501"]
